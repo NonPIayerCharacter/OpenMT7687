@@ -1,0 +1,20 @@
+var NAVTREE =
+[
+  [ "Compile Option Description", "index.html", [
+    [ "AW7698 Compile Option Introduction", "new_page_AW7698.html", null ],
+    [ "MT5932 Compile Option Introduction", "new_page_MT5932.html", null ],
+    [ "MT7682 Compile Option Introduction", "new_page_MT7682.html", null ],
+    [ "MT7686 Compile Option Introduction", "new_page_MT7686.html", null ],
+    [ "MT7687 Compile Option Introduction", "new_page_MT7687.html", null ],
+    [ "MT7697 Compile Option Introduction", "new_page_MT7697.html", null ],
+    [ "Software module usage", "middleware_readme.html", null ]
+  ] ]
+];
+
+var NAVTREEINDEX =
+[
+"index.html"
+];
+
+var SYNCONMSG = 'click to disable panel synchronisation';
+var SYNCOFFMSG = 'click to enable panel synchronisation';

@@ -1,0 +1,95 @@
+/*###ICF### Section handled by ICF editor, don't touch! ****/
+/*-Editor annotation file-*/
+/* IcfEditorFile="$TOOLKIT_DIR$\config\ide\IcfEditor\cortex_v1_0.xml" */
+/*-Specials-*/
+define symbol __ICFEDIT_intvec_start__ = 0x04004000;
+/*-Memory Regions-*/
+
+
+define symbol __ICFEDIT_region_SYSRAM_start__ = 0x04200000;
+define symbol __ICFEDIT_region_SYSRAM_end__   = 0x04259c00;
+define symbol __ICFEDIT_region_VSYSRAM_start__ = 0x14200000;
+define symbol __ICFEDIT_region_VSYSRAM_end__   = 0x14259c00;
+
+define symbol __ICFEDIT_region_BONSON_start__ = 0x04259c00;
+define symbol __ICFEDIT_region_BONSON_end__   = 0x04260000;
+
+define symbol __ICFEDIT_region_TCM_start__ = 0x04004000;
+define symbol __ICFEDIT_region_TCM_end__   = 0x04018000;
+/*-Sizes-*/
+define symbol __ICFEDIT_size_cstack__ = 0x1000;
+define symbol __ICFEDIT_size_heap__   = 0x800;
+/**** End of ICF editor section. ###ICF###*/
+
+define memory mem with size = 4G;
+
+define region SYSRAM_region      = mem:[from __ICFEDIT_region_SYSRAM_start__   to __ICFEDIT_region_SYSRAM_end__];
+define region VSYSRAM_region     = mem:[from __ICFEDIT_region_VSYSRAM_start__   to __ICFEDIT_region_VSYSRAM_end__];
+define region BONSON_region      = mem:[from __ICFEDIT_region_BONSON_start__   to __ICFEDIT_region_BONSON_end__];
+define region TCM_region      = mem:[from __ICFEDIT_region_TCM_start__   to __ICFEDIT_region_TCM_end__];
+
+define block CSTACK    with alignment = 8, size = __ICFEDIT_size_cstack__   { };
+define block HEAP      with alignment = 8, size = __ICFEDIT_size_heap__     { };
+
+define block SYSRAM_BLOCK with fixed order { 
+					  section .noncached_sysram_rwdata,
+                                          section .noncached_sysram_zidata
+                                        };
+define block VSYSRAM_BLOCK with fixed order { 
+                                          readonly,
+					  section .sysram_code,
+					  section .sysram_rodata,					  
+                                          readwrite,     
+					  section .n9fw                                                                                                        
+                                        };
+
+
+define block BONSON_BLOCK with fixed order { 
+                                          section .boson_data                   
+                                        };
+
+define block TCM_BLOCK with fixed order { section .intvec, 
+                                          section .tcm_code,
+                                          section .tcm_rodata,
+                                          section .tcm_rwdata,
+                                          section .tcm_zidata,
+                                          section .code_slim_tcm
+                                        };
+					
+define block TCM_BLOCK_init with fixed order { section .intvec_init, 
+                                          section .tcm_code_init,
+                                          section .tcm_rodata_init,
+                                          section .tcm_rwdata_init,
+                                          section .tcm_zidata_init,
+                                          section .code_slim_tcm_init
+                                        };
+
+initialize by copy { section .sysram_code };
+initialize by copy { section .sysram_rodata };
+initialize by copy { section .noncached_sysram_rwdata };
+initialize by copy { section .noncached_sysram_zidata };
+initialize by copy { readwrite };
+
+initialize manually with packing = none { section .n9fw };
+initialize manually with packing = none { section .boson_data };
+
+initialize manually with packing = none { section .intvec };
+initialize manually with packing = none { section .tcm_code };
+initialize manually with packing = none { section .tcm_rodata };
+initialize manually with packing = none { section .tcm_rwdata };
+initialize manually with packing = none { section .code_slim_tcm };
+
+do not initialize  { section .noinit };
+
+
+place in BONSON_region            { block BONSON_BLOCK };
+
+place at start of SYSRAM_region   { section .reset_handler };
+place in SYSRAM_region            { block SYSRAM_BLOCK, block TCM_BLOCK_init};
+place at end of VSYSRAM_region    { block VSYSRAM_BLOCK };
+
+place at start of TCM_region   { block TCM_BLOCK };
+place in TCM_region            { block HEAP };
+place at end of TCM_region     { block CSTACK };      
+
+check that size(block VSYSRAM_BLOCK) + size(block SYSRAM_BLOCK) <= size(SYSRAM_region);

@@ -1,0 +1,62 @@
+IoT_Flash_Tool (2523/2533/7682/7686/2811/AB155x/3335)
+
+v2.9.1 (20191029)
+1. Resolve issue that some Linux PC may occur segmentation fault
+2. Update external flash driver to resolve Qbit write fail issue
+3. Add 3M support for 155x and AG3335
+4. Add DMA for 155x 
+5. Reslove issue that format fail occasionally
+6. Modify checksum length is 4B
+7. Add flash tool logo
+8. Add "reset after power off" setting
+9. Remove baud rate display in UI
+
+v2.9.0 (20190726)
+1. Support AG3335
+2. Add Mac OS version
+3. 2811 external flash address display special process
+4. Load bin files number from 10 to 50
+5. Download limit time from 30s to infinite
+6. Add 2523 security boot feature
+7. Add SF_W25Q16FW, ZBit, issi flash
+
+v2.8.9 (20190409)
+1. [CoDA] Send secure boot before download/format/readback/OTP
+
+v2.8.8 (20190327)
+1. [DLL] Support 5932 secure_boot
+2. [DA] Add ISSI Flash Driver
+3. [DA] Fix 7686 ACC fail issue
+4. [DA] Fix OTP read fail issue for Winbond Flash Driver
+
+v2.8.7 (20181203)
+1. [DA] ExtFlash QSPI Auto-Config Patch
+2. [DA] Open MT2523S 4M Flash
+
+v2.8.6 (20181031)
+1. [UI] New Feature (new Setting\System CheckBox: Reset device after disconnect tartget)
+
+v2.8.5 (20180820)
+1. [DA] Fix Bug ([MT7686][Solu-M] device DL fail,Check Flash Check OPT 0x3F)
+2. [DA] Support GPIO-Auto-Config for 2811 QSPI_Ext_Flash Feature
+
+v2.8.4 (20180720)
+1. [CoDA] Linux_CoDA All Features
+2. [CoDA] Support secure_boot(82/86), Update CoDA Usage
+3. [DA] 7682/7686 efuse_sw_def Feature
+4. [DownloadLib] Enhance for 82/86_Customer_Serial_Port_Server Multi-Download case
+
+v2.8.3 (20180615)
+1. Support 82/86 secure_boot
+
+v2.8.2 (20180521)
+1. Support AB1552-2801D
+
+v2.8.1 (20180521)
+1. Fix power_hold issue for 2811S
+
+v2.8.0 (20180503)
+1. Support 2811A, 2811B, 2811S
+2. Support UART, USB, USB2.0
+3. Support QSPI_Ext_Flash Download
+4. Support Tool_Auth and ShowUID

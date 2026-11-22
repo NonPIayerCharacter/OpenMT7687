@@ -1,0 +1,1129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+
+  <task>
+    <ToolLogLevel class="TaskSetLogLevel">
+      <level>0</level><!-- 0:detail, 1:debug, 2:MP -->
+    </ToolLogLevel>
+    <DebugToolLog class="TaskSetLogLevel">
+      <level>1</level><!-- 0:detail, 1:debug, 2:MP -->
+    </DebugToolLog>
+    <DisableToolLog class="TaskSetLogLevel">
+      <level>2</level><!-- 0:detail, 1:debug, 2:MP -->
+    </DisableToolLog>
+    <SendToolLog class="TaskSendLog">
+      <level>2</level>
+      <msg>"Message"</msg>
+      <!-- 0:detail, 1:debug, 2:MP -->
+    </SendToolLog>
+    <SetLogAdditionName class="SetLogAdditionName">
+      <addition_name></addition_name>
+    </SetLogAdditionName>
+    <AppendLogAdditionName class="AppendLogAdditionName">
+      <addition_name></addition_name>
+    </AppendLogAdditionName>
+    <LoadBt40RssiOffset class="TaskLoadBt40RssiOffset">
+    </LoadBt40RssiOffset>
+    <SwitchH5 class="TaskSwitchH5">
+      <device_name>1530DUT</device_name>
+    </SwitchH5>
+    <SwitchTrans class="TaskSwitchTrans">
+      <device_name>1530DUT</device_name>
+    </SwitchTrans>
+    <DisableDbgMsg class="TaskDisableDbgMsg">
+      <device_name>1530DUT</device_name>
+      <delay_before_run>1000</delay_before_run>
+    </DisableDbgMsg>
+ 
+    <WriteFlashBinFile class="TaskWriteFlashBinFile">
+      <filename>AB155x.bin</filename>
+      <start_address>0</start_address>
+      <skip_erasing>false</skip_erasing>
+      <encryption_initial_key></encryption_initial_key>
+    </WriteFlashBinFile>
+    
+    <WriteFlashBinFileAndKeepCalData class="TaskWriteFlashAndKeepCalData">
+      <filename>AB155x.bin</filename>
+      <device_name></device_name>
+      <backup_bin_file></backup_bin_file>
+      <!--<start_address>0</start_address>-->
+    </WriteFlashBinFileAndKeepCalData>
+
+    <FlashRestoreNV class="TaskFlashRestoreNV">
+      <bin_file_path>AB155x.bin</bin_file_path>
+      <nvr_file_path>backup_mp.nvr</nvr_file_path>
+      <restore_file_path>AB155xwMP.bin</restore_file_path>
+    </FlashRestoreNV>
+    
+    <CrystalTrimWithTCB class="TaskCrystalTrim">
+      <use_TCB_DLB>TCB</use_TCB_DLB>
+      <device_name>1530DUT</device_name>
+      <tcb_name>1530TCB</tcb_name>
+      <initial_cap>46</initial_cap>
+    </CrystalTrimWithTCB>
+
+    <CrystalTrimWithDLB class="TaskCrystalTrim">
+      <use_TCB_DLB>DLB</use_TCB_DLB>
+      <device_name>1530DUT</device_name>
+      <initial_cap>46</initial_cap>
+    </CrystalTrimWithDLB>
+
+    <tcbSetGpioStatus class="TaskTcbSetGpioStatus">
+      <gpio>7</gpio>
+      <value>high</value>
+    </tcbSetGpioStatus>
+
+    <VerifyStorageContent class="VerifyStorageContent">
+      <airo_file>1530FlashBinFile.bin</airo_file>
+    </VerifyStorageContent>
+
+    <nvToBin class="NvToBin">
+      <nv_xml_filenames></nv_xml_filenames>
+      <nv_output_filename></nv_output_filename>
+    </nvToBin>
+
+    <xmlToBinFile class="xmlToBinFile">
+      <xml_filename></xml_filename>
+      <bin_filename></bin_filename>
+      <media_folder_path></media_folder_path>
+      <bin_file_size></bin_file_size> <!--k bytes-->
+    </xmlToBinFile>
+
+    <binFileToStruct class="binFileToStruct">
+      <bin_filename></bin_filename>
+    </binFileToStruct>
+
+    <loadNvAsNvrFile class="TaskLoadNvAsNvrFile">
+      <filename>nv_loaded.nvr</filename>
+      <device_name></device_name>
+    </loadNvAsNvrFile>
+
+    <loadMpNvAsNvrFile class="TaskLoadMpNvAsNvrFile">
+      <filename>nv_loaded.nvr</filename>
+      <device_name></device_name>
+    </loadMpNvAsNvrFile>
+
+    <loadNvrFileToDut class="TaskLoadNvrFileToDut">
+      <filename>nv_to_write.psr</filename>
+      <device_name></device_name>
+    </loadNvrFileToDut>
+
+    <fileCrc16Calculation class="FileCrc16Calculation">
+      <filename></filename>
+      <crc_init>0xFFFF</crc_init>
+      <file_offset_to_flash>0x5000</file_offset_to_flash>
+      <header_address>0x5000</header_address>
+    </fileCrc16Calculation>
+
+    <connectPowerSupply class="PowerSupplyControl">
+      <model>KEITHLEY_2450</model>
+      <device>PST_1</device>
+      <board_index>0</board_index>
+      <primary_address>18</primary_address>
+      <secondary_address>None</secondary_address>
+    </connectPowerSupply>
+
+    <disconnectPowerSupply class="PowerSupplyControl">
+      <device>PST_1</device>
+    </disconnectPowerSupply>
+
+    <setChannelToPST class="PowerSupplyControl">
+      <pst_name>PST_1</pst_name>
+      <channel>1</channel>
+    </setChannelToPST>
+
+    <setCurrentToPST class="PowerSupplyControl">
+      <pst_name>PST_1</pst_name>
+      <current_limit>2.0</current_limit>
+    </setCurrentToPST>
+
+    <setVoltageToPST class="PowerSupplyControl">
+      <pst_name>PST_1</pst_name>
+      <voltage>3.8</voltage>
+    </setVoltageToPST>
+
+    <setOutputToPST class="PowerSupplyControl">
+      <pst_name>PST_1</pst_name>
+      <output>ON</output>
+    </setOutputToPST>
+
+    <getCurrentSettingFormPST class="PowerSupplyControl">
+      <pst_name>PST_1</pst_name>
+    </getCurrentSettingFormPST>
+
+    <getVoltageSettingFormPST class="PowerSupplyControl">
+      <pst_name>PST_1</pst_name>
+    </getVoltageSettingFormPST>
+
+    <getOutputStateFormPST class="PowerSupplyControl">
+      <pst_name>PST_1</pst_name>
+    </getOutputStateFormPST>
+
+    <measureCurrentByPST class="PowerSupplyControl">
+      <pst_name>PST_1</pst_name>
+    </measureCurrentByPST>
+
+    <measureVoltageByPST class="PowerSupplyControl">
+      <pst_name>PST_1</pst_name>
+    </measureVoltageByPST>
+
+    <resetThePST class="PowerSupplyControl">
+      <pst_name>PST_1</pst_name>
+    </resetThePST>
+
+    <setSourceFunctionToVoltageToPST class="PowerSupplyControl">
+      <pst_name>PST_1</pst_name>
+    </setSourceFunctionToVoltageToPST>
+
+    <setSourceFunctionToCurrentToPST class="PowerSupplyControl">
+      <pst_name>PST_1</pst_name>
+    </setSourceFunctionToCurrentToPST>
+
+    <setSourceVoltageILimitToPST class="PowerSupplyControl">
+      <pst_name>PST_1</pst_name>
+      <i_limit>0.1</i_limit>
+    </setSourceVoltageILimitToPST>
+
+    <setSourceVoltageRangeToPST class="PowerSupplyControl">
+      <pst_name>PST_1</pst_name>
+      <voltage_range>1</voltage_range>
+    </setSourceVoltageRangeToPST>
+
+    <setSourceCurrentRangeToPST class="PowerSupplyControl">
+      <pst_name>PST_1</pst_name>
+      <current_range>1</current_range>
+    </setSourceCurrentRangeToPST>
+
+    <lePerReport class="TaskLePerReport">
+      <device_name>1530DUT</device_name>
+    </lePerReport>
+
+    <bt3BerReport class="TaskBt3BerReport">
+      <device_name>1530DUT</device_name>
+      <transmitter_data_pattern>1</transmitter_data_pattern>
+      <report_time>1000</report_time>
+    </bt3BerReport>
+
+    <BT_set_crystal_cap class="BT_set_crystal_cap">
+      <device_name>1530DUT</device_name>
+      <cap>150</cap>
+    </BT_set_crystal_cap>
+
+    <BT_get_crystal_cap class="BT_get_crystal_cap">
+      <device_name>1530DUT</device_name>
+    </BT_get_crystal_cap>
+
+    <BT_BT3_continuous_tx_start class="BT_BT3_singletone_tx">
+      <device_name>1530DUT</device_name>
+      <frequency>2441</frequency>
+    </BT_BT3_continuous_tx_start>
+
+    <BT_BT3_packet_tx_start class="BT_BT3_packet_tx_start">
+      <device_name>1530DUT</device_name>
+      <frequency>2441</frequency>
+      <packet_type>DH1</packet_type>
+      <payload_length>27</payload_length>
+      <!-- 0000, 1111, 1010, PRBS9, 11110000 -->
+      <pattern_type>0000</pattern_type>
+      <init_bt_tx_power_level>7</init_bt_tx_power_level>
+      <bt_max_tx_power_level>7</bt_max_tx_power_level>
+      <bdr_tx_power_level_offset>0db</bdr_tx_power_level_offset>
+      <bdr_fine_tx_power_level_offset>0db</bdr_fine_tx_power_level_offset>
+      <edr_tx_power_level_offset>0db</edr_tx_power_level_offset>
+      <edr_fine_tx_power_level_offset>0db</edr_fine_tx_power_level_offset>
+      <fixed_tx_power_level_enable>disable</fixed_tx_power_level_enable>
+      <fixed_tx_power_level_value>7</fixed_tx_power_level_value>
+      <bd_address>00006BC6967E</bd_address>
+    </BT_BT3_packet_tx_start>
+
+    <BT_BT3_packet_tx_start_hopping class="BT_BT3_packet_tx_start_hopping">
+      <device_name>1530DUT</device_name>
+      <start_frequency>2402</start_frequency>
+      <end_frequency>2480</end_frequency>
+      <packet_type>DH1</packet_type>
+      <payload_length>27</payload_length>
+      <!-- 0000, 1111, 1010, PRBS9, 11110000 -->
+      <pattern_type>0000</pattern_type>
+      <init_bt_tx_power_level>7</init_bt_tx_power_level>
+      <bt_max_tx_power_level>7</bt_max_tx_power_level>
+      <bdr_tx_power_level_offset>0db</bdr_tx_power_level_offset>
+      <bdr_fine_tx_power_level_offset>0db</bdr_fine_tx_power_level_offset>
+      <edr_tx_power_level_offset>0db</edr_tx_power_level_offset>
+      <edr_fine_tx_power_level_offset>0dB</edr_fine_tx_power_level_offset>
+      <fixed_tx_power_level_enable>disable</fixed_tx_power_level_enable>
+      <fixed_tx_power_level_value>7</fixed_tx_power_level_value>
+      <bd_address>00006BC6967E</bd_address>
+    </BT_BT3_packet_tx_start_hopping>
+
+    <BT_BT3_packet_rx_start class="BT_BT3_packet_rx_start">
+      <device_name>1530DUT</device_name>
+      <frequency>2441</frequency>
+      <packet_type>DH1</packet_type>
+      <!-- 0000, 1111, 1010, PRBS9, 11110000 -->
+      <pattern_type>0000</pattern_type>
+      <bd_address>00006BC6967E</bd_address>
+    </BT_BT3_packet_rx_start>
+
+    <BT_LE_packet_tx_start class="BT_LE_packet_tx_start">
+      <device_name>1530DUT</device_name>
+      <frequency>2441</frequency>
+      <modulation_type>1Mbps</modulation_type>
+      <payload_length>37</payload_length>
+      <!-- 0000, 1111, 1010, PRBS9, 11110000 -->
+      <pattern_type>0000</pattern_type>
+      <init_ble_tx_power_level>7</init_ble_tx_power_level>
+      <bt_max_tx_power_level>7</bt_max_tx_power_level>
+      <le_tx_power_level_offset>0</le_tx_power_level_offset>
+      <le_fine_tx_power_level_offset>0</le_fine_tx_power_level_offset>
+      <fixed_tx_power_level_enable>disable</fixed_tx_power_level_enable>
+      <fixed_tx_power_level_value>7</fixed_tx_power_level_value>
+      <bd_address>00006BC6967E</bd_address>
+    </BT_LE_packet_tx_start>
+
+    <BT_LE_packet_tx_stop class="BT_LE_packet_tx_stop">
+      <device_name>1530DUT</device_name>
+    </BT_LE_packet_tx_stop>
+
+    <BT_LE_packet_tx_start_hopping class="BT_LE_packet_tx_start_hopping">
+      <device_name>1530DUT</device_name>
+      <start_frequency>2402</start_frequency>
+      <end_frequency>2480</end_frequency>
+      <modulation_type>1Mbps</modulation_type>
+      <payload_length>37</payload_length>
+      <!-- 0000, 1111, 1010, PRBS9, 11110000 -->
+      <pattern_type>0000</pattern_type>
+      <init_bt_tx_power_level>7</init_bt_tx_power_level>
+      <bt_max_tx_power_level>7</bt_max_tx_power_level>
+      <le_tx_power_level_offset>0</le_tx_power_level_offset>
+      <le_fine_tx_power_level_offset>0</le_fine_tx_power_level_offset>
+      <fixed_tx_power_level_enable>disable</fixed_tx_power_level_enable>
+      <fixed_tx_power_level_value>7</fixed_tx_power_level_value>
+      <bd_address>00006BC6967E</bd_address>
+    </BT_LE_packet_tx_start_hopping>
+    
+    <BT_LE_packet_rx_start class="BT_LE_packet_rx_start">
+      <device_name>1530DUT</device_name>
+      <frequency>2441</frequency>
+      <modulation_type>1Mbps</modulation_type>
+    </BT_LE_packet_rx_start>
+
+    <BT_BT3_continous_tx_start class="BT_BT3_singletone_tx">
+      <device_name>1530DUT</device_name>
+      <frequency>2442</frequency>
+      <chennel>39</chennel>
+    </BT_BT3_continous_tx_start>
+
+    <BT_BT3_continous_tx_stop class="BT_BT3_singletone_tx_stop">
+      <device_name>1530DUT</device_name>
+    </BT_BT3_continous_tx_stop>
+
+    <BtTxTest class="TaskTxTest">
+      <device_name>1530DUT</device_name>
+      <tcb_name>1530TCB</tcb_name>
+      <channel>Use ChannelList</channel>
+      <bit_count>10000</bit_count>
+      <packet_count>100</packet_count>
+      <ber_br>0.1</ber_br>
+      <ber_edr>0.1</ber_edr>
+      <per_le>30.0</per_le>
+      <test_BR>true</test_BR>
+      <test_EDR>true</test_EDR>
+      <test_LE>false</test_LE>
+    </BtTxTest>
+
+    <BtRxTest class="TaskRxTest">
+      <device_name>1530DUT</device_name>
+      <tcb_name>1530TCB</tcb_name>
+      <channel>Use ChannelList</channel>
+      <cable_mode>false</cable_mode>
+      <bit_count>10000</bit_count>
+      <packet_count>100</packet_count>
+      <ber_br>0.1</ber_br>
+      <ber_edr>0.1</ber_edr>
+      <per_le>30.0</per_le>
+      <test_BR>true</test_BR>
+      <test_EDR>true</test_EDR>
+      <test_LE>false</test_LE>
+    </BtRxTest>
+
+    <TcbTxCalibration class="TaskTcbTxCalibration">
+      <description>Use Golden sample to be a calibration kit to calibrate TCB RF power sensor's accuracy.
+Please check the Golden sample's output power with RF tester first and enter the power in below input box.</description>
+      <device_name>1530DUT</device_name>
+      <tcb_name>1530TCB</tcb_name>
+      <tcb_rssi_max>86</tcb_rssi_max>
+      <tcb_rssi_min>46</tcb_rssi_min>
+      <max_count>15</max_count>
+      <golden_power>7</golden_power>
+    </TcbTxCalibration>
+
+    <createPipe class="PipeControl">
+      <device_name>1530DUT</device_name>
+      <wireshark_path>D:\Wireshark_Release\Wireshark.exe</wireshark_path>
+      <output_pcapng_file_name>Dump</output_pcapng_file_name>
+      <switch_next_file_after_num_kb>1000</switch_next_file_after_num_kb>
+      <auto_scroll_to_bottom>true</auto_scroll_to_bottom>
+      <toolVersion>v0.1</toolVersion>
+      <port>23</port>
+    </createPipe>
+
+    <closePipe class="PipeControl">
+      <device_name>1530DUT</device_name>
+    </closePipe>
+
+    <connectFrontline class="PipeControl">
+      <device_name>1530DUT</device_name>
+    </connectFrontline>
+
+    <disconnectFrontline class="PipeControl">
+      <device_name>1530DUT</device_name>
+    </disconnectFrontline>
+
+    <PhoneConnection class="PhoneConnection">
+    </PhoneConnection>
+
+    <ConnectSerialHost class="HostControl">
+      <host>serial</host>
+      <action>connect</action>
+      <device_name>1530DUT</device_name>
+      <port>69</port>
+      <rate>115200</rate>
+      <transport>h4</transport> <!-- value: "h4" or "h5" -->
+    </ConnectSerialHost>
+
+    <ConnectDUT class="HostControl">
+      <host>serial</host>
+      <action>connect</action>
+      <device_name>1530DUT</device_name>
+      <port>69</port>
+      <rate>115200</rate>
+      <transport>h4</transport>
+      <!-- value: "h4" or "h5" -->
+    </ConnectDUT>
+    <DisconnectDUT class="HostControl">
+      <host>serial</host>
+      <action>disconnect</action>
+      <device_name>1530DUT</device_name>
+      <port>69</port>
+      <rate>115200</rate>
+      <transport>h4</transport>
+      <!-- value: "h4" or "h5" -->
+    </DisconnectDUT>
+
+    <ConnectTCB class="HostControl">
+      <host>serial</host>
+      <action>connect</action>
+      <device_name>1530TCB</device_name>
+      <port>69</port>
+      <rate>115200</rate>
+      <transport>h4</transport>
+      <!-- value: "h4" or "h5" -->
+    </ConnectTCB>
+    <DisconnectTCB class="HostControl">
+      <host>serial</host>
+      <action>disconnect</action>
+      <device_name>1530TCB</device_name>
+      <port>69</port>
+      <rate>115200</rate>
+      <transport>h4</transport>
+      <!-- value: "h4" or "h5" -->
+    </DisconnectTCB>
+
+    <PoweroffDUTwithDLB class="Samd21Task">
+      <action>poweroff</action>
+      <device_name>DLB1</device_name>
+      <port>62</port>
+      <rate>115200</rate>
+    </PoweroffDUTwithDLB>
+    <ConnectDLB1 class="Samd21Task">
+      <action>connect</action>
+      <device_name>DLB1</device_name>
+      <port>62</port>
+      <rate>115200</rate>
+      <max_battery_current_mA>80</max_battery_current_mA>
+      <enable_charge>false</enable_charge>
+    </ConnectDLB1>
+    <DisconnectDLB1 class="Samd21Task">
+      <action>disconnect</action>
+      <device_name>DLB1</device_name>
+      <port>62</port>
+      <rate>115200</rate>
+    </DisconnectDLB1>
+    <Samd21Version class="Samd21Task">
+      <action>version</action>
+      <device_name>DLB1</device_name>
+    </Samd21Version>
+    
+    <Samd21Power class="Samd21PowerTask">
+      <action>vbat_adc</action>
+      <board_slot>0</board_slot>
+      <power_mv>3300</power_mv>
+      <enable_charge>false</enable_charge>
+    </Samd21Power>
+    <Samd21Data class="Samd21DataTask">
+      <action>read</action>
+      <board_slot>0</board_slot>
+      <tlv_tag>0</tlv_tag>
+      <hex_data>00</hex_data>
+    </Samd21Data>
+    
+    <Samd21LEDOnRed class="Samd21LEDTask">
+      <action>led_red</action>
+      <board_slot>0</board_slot>
+      <turn_on>true</turn_on>
+    </Samd21LEDOnRed>
+    <Samd21LEDOnGreen class="Samd21LEDTask">
+      <action>led_green</action>
+      <board_slot>0</board_slot>
+      <turn_on>true</turn_on>
+    </Samd21LEDOnGreen>
+    <Samd21LEDOnBlue class="Samd21LEDTask">
+      <action>led_blue</action>
+      <board_slot>0</board_slot>
+      <turn_on>true</turn_on>
+    </Samd21LEDOnBlue>
+    
+    <Samd21LEDOffRed class="Samd21LEDTask">
+      <action>led_red</action>
+      <board_slot>0</board_slot>
+      <turn_on>false</turn_on>
+    </Samd21LEDOffRed>
+    <Samd21LEDOffGreen class="Samd21LEDTask">
+      <action>led_green</action>
+      <board_slot>0</board_slot>
+      <turn_on>false</turn_on>
+    </Samd21LEDOffGreen>
+    <Samd21LEDOffBlue class="Samd21LEDTask">
+      <action>led_blue</action>
+      <board_slot>0</board_slot>
+      <turn_on>false</turn_on>
+    </Samd21LEDOffBlue>
+
+    <Samd21Pin class="Samd21PinTask">
+      <action>pin_SDA</action>
+      <board_slot>0</board_slot>
+      <bit_on>false</bit_on>
+    </Samd21Pin>
+
+    <Samd21Crystal class="Samd21CrystalTask">
+      <board_slot>0</board_slot>
+      <resolution>1</resolution> <!-- 1ppm: 0, 0.5ppm: 1, 0.25ppm: 2, 0.2ppm: 3 -->
+      <nxo>2560000</nxo>
+    </Samd21Crystal>
+
+    <ChangeSerialTransport class="HostControl">
+      <host>serial</host>
+      <action>change_transport</action>
+      <device_name>1530DUT</device_name>
+      <transport>h4</transport> <!-- value: "h4", "h5", or "ascii" -->
+      <conn_handle/>
+      <tx_att_handle/>
+      <rx_att_handle/>
+      <mtu/>
+    </ChangeSerialTransport>
+
+    <ResetDutWithDLB class="ResetDutWithDLB">
+      <dut_name>1530DUT</dut_name>
+      <board_slot>0</board_slot>
+      <set_SDA_high>false</set_SDA_high>
+      <delay_in_reset>50</delay_in_reset>
+      <delay_after_reset>500</delay_after_reset>
+      <enable_switch_h5>true</enable_switch_h5>
+    </ResetDutWithDLB>
+
+    <TaskInitTcbDut class="InitTcbDut">
+      <device_name>1530DUT</device_name>
+      <tcb_name>1530TCB</tcb_name>
+      <reset_by_TCB>true</reset_by_TCB>
+      <set_SDA_high>false</set_SDA_high>
+      <delay_after_reset>1500</delay_after_reset>
+    </TaskInitTcbDut>
+
+    <DeviceModeWakeup class="TaskDeviceModeWakeup">
+      <device_name>1530DUT</device_name>
+    </DeviceModeWakeup>
+
+    <SendBreak class="SendBreak">
+      <device_name>1530DUT</device_name>
+      <time_ms>50</time_ms>
+    </SendBreak>
+
+    <GetBaudrate class="TaskGetBaudrate">
+      <device_name>1530DUT</device_name>
+    </GetBaudrate>
+
+    <RelayPacket class="PacketRelay">
+      <device_name>1530DUT</device_name>
+      <packet1>0100FC020230</packet1>
+      <packet2>0100FC020230</packet2>
+    </RelayPacket>
+
+    <files2FatImage class="Files2FatImage">
+      <files_path></files_path>
+      <image_filename></image_filename>
+      <file_system_size_in_k_bytes></file_system_size_in_k_bytes>
+    </files2FatImage>
+
+    <fatImage2Files class="FatImage2Files">
+      <fat_image_filename></fat_image_filename>
+      <output_path></output_path>
+    </fatImage2Files>
+
+    <taskRegulatorCalibration class ="TaskRegulatorCalibration">
+      <device_name>1530DUT</device_name>
+      <write_nv_key>true</write_nv_key>
+      <vin_high_voltage>3.3</vin_high_voltage>
+      <buck_mv_voltage>1.6</buck_mv_voltage>
+        <min_offset_adc_buck_mv>-2</min_offset_adc_buck_mv>
+        <max_offset_adc_buck_mv>2</max_offset_adc_buck_mv>
+      <ldo_lv2_voltage>1.25</ldo_lv2_voltage>
+        <min_offset_adc_ldo_lv2>-2</min_offset_adc_ldo_lv2>
+        <max_offset_adc_ldo_lv2>2</max_offset_adc_ldo_lv2>
+      <buck_lv_voltage>1.35</buck_lv_voltage>
+        <min_offset_adc_buck_lv>-2</min_offset_adc_buck_lv>
+        <max_offset_adc_buck_lv>2</max_offset_adc_buck_lv>
+      <ldo_lv1_voltage>1.1</ldo_lv1_voltage>
+        <min_offset_adc_ldo_lv1>-2</min_offset_adc_ldo_lv1>
+        <max_offset_adc_ldo_lv1>2</max_offset_adc_ldo_lv1>
+      <ldo_hv_voltage>3.0</ldo_hv_voltage>
+        <min_offset_adc_ldo_hv>-2</min_offset_adc_ldo_hv>
+        <max_offset_adc_ldo_hv>2</max_offset_adc_ldo_hv>
+      <hv_mic_voltage>3.3</hv_mic_voltage>
+        <min_offset_adc_hv_mic>-8</min_offset_adc_hv_mic>
+        <max_offset_adc_hv_mic>8</max_offset_adc_hv_mic>
+    </taskRegulatorCalibration>
+
+    <taskChargerAdcCalibration class ="TaskChargerAdcCalibration">
+      <device_name>1530DUT</device_name>
+      <write_nv_key>true</write_nv_key>
+      <vbat_voltage>4.2</vbat_voltage>
+      <cc1_threshold_voltage>3</cc1_threshold_voltage>
+      <cc2_threshold_voltage>4</cc2_threshold_voltage>
+      <cv_threshold_voltage>4.2</cv_threshold_voltage>
+      <full_bat_threshold_voltage>4.25</full_bat_threshold_voltage>
+      <recharge_threshold_voltage>4.1</recharge_threshold_voltage>
+    </taskChargerAdcCalibration>
+
+    <taskChargerDacCalibration class ="TaskChargerDacCalibration">
+      <device_name>1530DUT</device_name>
+      <write_nv_key>true</write_nv_key>
+      <initial_dac_value>1023</initial_dac_value>
+      <dac_lower_limit>0</dac_lower_limit>
+      <threshold_count>5</threshold_count>
+      <threshold_vichg>10</threshold_vichg>
+      <interval_ms>6</interval_ms>
+      <timeout_ms>8000</timeout_ms>
+      <offset_value>0</offset_value>
+    </taskChargerDacCalibration>
+
+    <taskExtChargerDacCalibration class ="TaskExtChargerDacCalibration">
+      <device_name>1530DUT</device_name>
+      <write_nv_key>true</write_nv_key>
+      <initial_dac_value>1023</initial_dac_value>
+      <dac_lower_limit>0</dac_lower_limit>
+      <threshold_count>5</threshold_count>
+      <threshold_vichg>60</threshold_vichg>
+      <interval_ms>6</interval_ms>
+      <timeout_ms>8000</timeout_ms>
+      <offset_value>0</offset_value>
+      <trickle_current>10</trickle_current>
+    </taskExtChargerDacCalibration>
+
+    <TaskResetDut class="ResetDut">
+      <device_name>1530DUT</device_name>
+      <tcb_name>1530TCB</tcb_name>
+    </TaskResetDut>
+
+    <TaskResetDutBeforeDacCalibration class ="ResetDutBeforeDacCalibration">
+      <dut_name>1530DUT</dut_name>
+      <tcb_name>1530TCB</tcb_name>
+    </TaskResetDutBeforeDacCalibration>
+
+    <TaskReadNvKeyFromBin class="ReadNvkeyFromBin">
+      <bin_file_path>D:\Desktop\AB1533_V1.0.1_20180705_134646.bin</bin_file_path>
+    </TaskReadNvKeyFromBin>
+
+    <TaskSetBt3BdAddress class="SetBt3BdAddress">
+      <bd_address_bt3>000011112222</bd_address_bt3>
+    </TaskSetBt3BdAddress>
+
+    <TaskSetBt4BdAddress class="SetBt4BdAddress">
+      <bd_address_bt4>000011112222</bd_address_bt4>
+    </TaskSetBt4BdAddress>
+
+    <taskReadFlash class="TaskReadFlash">
+      <device_name>1530DUT</device_name>
+      <bin_filename>D:\\1530_ReadFlash.bin</bin_filename>
+      <start_address>0</start_address>
+      <read_byte_length>1048576</read_byte_length>
+      <more_page>1</more_page>
+    </taskReadFlash>
+
+    <startFota class="TaskStartFota" >
+      <fota_package_filename></fota_package_filename>
+      <file_system_filename></file_system_filename>
+      <nvr_filename></nvr_filename>
+      <device_name>1530DUT</device_name>
+      <fota_via_air_update_dongle>true</fota_via_air_update_dongle> <!-- true for AUD, false for UART -->
+      <connection_timeout_ms>2000</connection_timeout_ms>
+      <target_bd_address>0x112233445566</target_bd_address>
+      <minimum_battery_level>30</minimum_battery_level>      <!-- percentage. e.g. 30% -->
+    </startFota>
+
+    <writeFotaPackage class="TaskWriteFotaPackage" >
+      <fota_package_filename></fota_package_filename>
+      <device_name></device_name>
+    </writeFotaPackage>
+
+    <generateFotaPackage class="TaskGenerateFotaPackage" >
+      <source_filename>flash_image.bin</source_filename>
+      <!-- 0: None, 1: Lzma, 2: Lzma+AES -->
+      <compression_type>0</compression_type>
+      <!-- 0: CRC32, 1: SHA256, 2: SHA256+RSA (not supported now) -->
+      <compression_level>0</compression_level> <!-- 0 ~ 9 -->
+      <compression_dictionary_size>0x4000</compression_dictionary_size> <!-- LZMA dic. size -->
+      <aes_key>0x000102030405060708090A0B0C0D0E0F</aes_key> <!-- 16 bytes key -->
+      <aes_iv>0x00112233445566778899AABBCCDDEEFF</aes_iv> <!-- 16 bytes initial vector -->
+      <integrity_check_type>1</integrity_check_type>
+      <mover_info></mover_info> <!-- pairs of
+                                              offset,length,destination address;
+                                              offset,length,destination address ...
+                                         e.g. 0x1000,0x4000,0x1000;
+                                              0x7000,0x1000,0xF000 -->
+      <output_filename>fota_pkg.bin</output_filename>
+      <version></version> <!-- max 32 bytes ASCII string including ending \0 -->
+      <customized_data></customized_data>
+    </generateFotaPackage>
+
+    <generateFileSystemImage class="TaskGenerateFileSystemImage">
+      <source_filename></source_filename>
+      <output_filename></output_filename>
+    </generateFileSystemImage>
+
+
+    <ACTION_DEVICE_CHECK_MODEL class="PhoneControl">
+      <phone_id>phone_1</phone_id>
+	  <timeout_sec>10</timeout_sec>
+	  <app_timeout_sec>5</app_timeout_sec>
+	  <resp_list>CHECK_MODEL_R1,CHECK_MODEL_R2,CHECK_MODEL_R3</resp_list>
+    </ACTION_DEVICE_CHECK_MODEL>
+
+	<ACTION_DEVICE_VIBRATE class="PhoneControl">
+      <phone_id>phone_1</phone_id>
+	  <timeout_sec>10</timeout_sec>
+	  <app_timeout_sec>5</app_timeout_sec>
+	  <resp_list>VIBRATE_R1,VIBRATE_R2</resp_list>
+    </ACTION_DEVICE_VIBRATE>
+
+    <ACTION_ADD_MUSIC_TO_PLAYLIST class="PhoneControl">
+      <phone_id>phone_1</phone_id>
+	  <file_path>/sdcard/airoha_test/music.wav</file_path>
+	  <timeout_sec>10</timeout_sec>
+	  <app_timeout_sec>5</app_timeout_sec>
+	  <resp_list>ADD_MUSIC_TO_PLAYLIST_R1,ADD_MUSIC_TO_PLAYLIST_R2,ADD_MUSIC_TO_PLAYLIST_R3</resp_list>
+    </ACTION_ADD_MUSIC_TO_PLAYLIST>
+
+	<ACTION_CLEAR_PLAYLIST class="PhoneControl">
+      <phone_id>phone_1</phone_id>
+	  <timeout_sec>10</timeout_sec>
+	  <app_timeout_sec>5</app_timeout_sec>
+	  <resp_list>CLEAR_PLAYLIST_R1,CLEAR_PLAYLIST_R2</resp_list>
+    </ACTION_CLEAR_PLAYLIST>
+
+	<ACTION_CLEAR_PLAYLIST class="PhoneControl">
+      <phone_id>phone_1</phone_id>
+	  <timeout_sec>10</timeout_sec>
+	  <app_timeout_sec>5</app_timeout_sec>
+	  <resp_list>CLEAR_PLAYLIST_R1,CLEAR_PLAYLIST_R2</resp_list>
+    </ACTION_CLEAR_PLAYLIST>
+
+	<ACTION_MUSIC_PLAY class="PhoneControl">
+      <phone_id>phone_1</phone_id>
+	  <timeout_sec>10</timeout_sec>
+	  <app_timeout_sec>5</app_timeout_sec>
+	  <resp_list>MUSIC_PLAY_R1,MUSIC_PLAY_R2</resp_list>
+    </ACTION_MUSIC_PLAY>
+
+	<ACTION_MUSIC_PAUSE class="PhoneControl">
+      <phone_id>phone_1</phone_id>
+	  <timeout_sec>10</timeout_sec>
+	  <app_timeout_sec>5</app_timeout_sec>
+	  <resp_list>MUSIC_PAUSE_R1,MUSIC_PAUSE_R2</resp_list>
+    </ACTION_MUSIC_PAUSE>
+
+	<ACTION_MUSIC_NEXT_TRACK class="PhoneControl">
+      <phone_id>phone_1</phone_id>
+	  <timeout_sec>10</timeout_sec>
+	  <app_timeout_sec>5</app_timeout_sec>
+	  <resp_list>MUSIC_NEXT_TRACK_R1,MUSIC_NEXT_TRACK_R2</resp_list>
+    </ACTION_MUSIC_NEXT_TRACK>
+
+	<ACTION_MUSIC_PREVIOUS_TRACK class="PhoneControl">
+      <phone_id>phone_1</phone_id>
+	  <timeout_sec>10</timeout_sec>
+	  <app_timeout_sec>5</app_timeout_sec>
+	  <resp_list>MUSIC_PREVIOUS_TRACK_R1,MUSIC_PREVIOUS_TRACK_R2</resp_list>
+    </ACTION_MUSIC_PREVIOUS_TRACK>
+
+	<ACTION_VOLUME_UP class="PhoneControl">
+      <phone_id>phone_1</phone_id>
+	  <timeout_sec>10</timeout_sec>
+	  <app_timeout_sec>5</app_timeout_sec>
+	  <resp_list>VOLUME_UP_R1,VOLUME_UP_R2</resp_list>
+    </ACTION_VOLUME_UP>
+
+	<ACTION_VOLUME_DOWN class="PhoneControl">
+      <phone_id>phone_1</phone_id>
+	  <timeout_sec>10</timeout_sec>
+	  <app_timeout_sec>5</app_timeout_sec>
+	  <resp_list>VOLUME_DOWN_R1,VOLUME_DOWN_R2</resp_list>
+    </ACTION_VOLUME_DOWN>
+
+    <ACTION_BLUETOOTH_ENABLE_ADAPTER class="PhoneControl">
+      <phone_id>phone_1</phone_id>
+	  <timeout_sec>10</timeout_sec>
+	  <app_timeout_sec>5</app_timeout_sec>
+	  <resp_list>BT_ENABLE_ADAPTER_R1,BT_ENABLE_ADAPTER_R2</resp_list>
+    </ACTION_BLUETOOTH_ENABLE_ADAPTER>
+
+    <ACTION_BLUETOOTH_DISABLE_ADAPTER class="PhoneControl">
+      <phone_id>phone_1</phone_id>
+	  <timeout_sec>10</timeout_sec>
+	  <app_timeout_sec>5</app_timeout_sec>
+	  <resp_list>BT_DISABLE_ADAPTER_R1,BT_DISABLE_ADAPTER_R2</resp_list>
+    </ACTION_BLUETOOTH_DISABLE_ADAPTER>
+
+    <ACTION_BLUETOOTH_CHECK_ADAPTER class="PhoneControl">
+      <phone_id>phone_1</phone_id>
+	  <timeout_sec>10</timeout_sec>
+	  <app_timeout_sec>5</app_timeout_sec>
+	  <resp_list>BT_CHECK_ADAPTER_R1,BT_CHECK_ADAPTER_R2,BT_CHECK_ADAPTER_R3</resp_list>
+    </ACTION_BLUETOOTH_CHECK_ADAPTER>
+
+    <ACTION_BLUETOOTH_START_SCAN class="PhoneControl">
+      <phone_id>phone_1</phone_id>
+	  <timeout_sec>10</timeout_sec>
+	  <app_timeout_sec>5</app_timeout_sec>
+	  <resp_list>BT_START_SCAN_R1,BT_START_SCAN_R2</resp_list>
+    </ACTION_BLUETOOTH_START_SCAN>
+
+    <ACTION_BLUETOOTH_STOP_SCAN class="PhoneControl">
+      <phone_id>phone_1</phone_id>
+	  <timeout_sec>10</timeout_sec>
+	  <app_timeout_sec>5</app_timeout_sec>
+	  <resp_list>BT_STOP_SCAN_R1,BT_STOP_SCAN_R2</resp_list>
+    </ACTION_BLUETOOTH_STOP_SCAN>
+
+    <ACTION_BLUETOOTH_CHECK_SCAN_STATE class="PhoneControl">
+      <phone_id>phone_1</phone_id>
+	  <timeout_sec>10</timeout_sec>
+	  <app_timeout_sec>5</app_timeout_sec>
+	  <resp_list>BT_CHECK_SCAN_STATE_R1,BT_CHECK_SCAN_STATE_R2,BT_CHECK_SCAN_STATE_R3</resp_list>
+    </ACTION_BLUETOOTH_CHECK_SCAN_STATE>
+
+    <ACTION_BLUETOOTH_GET_BD_ADDR class="PhoneControl">
+      <phone_id>phone_1</phone_id>
+	  <device_name>airoha</device_name>
+	  <timeout_sec>10</timeout_sec>
+	  <app_timeout_sec>5</app_timeout_sec>
+	  <resp_list>BT_GET_BD_ADDR_R1</resp_list>
+    </ACTION_BLUETOOTH_GET_BD_ADDR>
+
+    <RESPONSE_BLUETOOTH_GET_BD_ADDR class="PhoneControl">
+      <phone_id>phone_1</phone_id>
+	  <timeout_sec>1</timeout_sec>
+	  <resp_list>RESPONSE_BLUETOOTH_GET_BD_ADDR</resp_list>
+    </RESPONSE_BLUETOOTH_GET_BD_ADDR>
+
+    <RESPONSE_BLUETOOTH_INQUIRY_BD_ADDR class="PhoneControl">
+      <phone_id>phone_1</phone_id>
+	  <timeout_sec>1</timeout_sec>
+	  <resp_list>RESPONSE_BLUETOOTH_INQUIRY_BD_ADDR</resp_list>
+    </RESPONSE_BLUETOOTH_INQUIRY_BD_ADDR>
+
+    <ACTION_BLUETOOTH_CONNECT class="PhoneControl">
+      <phone_id>phone_1</phone_id>
+      <mac_addr>55:66:55:66:55:66</mac_addr>
+	  <timeout_sec>10</timeout_sec>
+	  <app_timeout_sec>5</app_timeout_sec>
+	  <resp_list>BT_CONNECT_R1,BT_CONNECT_R2</resp_list>
+    </ACTION_BLUETOOTH_CONNECT>
+
+    <ACTION_BLUETOOTH_DISCONNECT class="PhoneControl">
+      <phone_id>phone_1</phone_id>
+      <mac_addr>55:66:55:66:55:66</mac_addr>
+	  <timeout_sec>10</timeout_sec>
+	  <app_timeout_sec>5</app_timeout_sec>
+	  <resp_list>BT_DISCONNECT_R1,BT_DISCONNECT_R2</resp_list>
+    </ACTION_BLUETOOTH_DISCONNECT>
+
+    <ACTION_BLUETOOTH_CHECK_CONNECT_STATE class="PhoneControl">
+      <phone_id>phone_1</phone_id>
+      <mac_addr>55:66:55:66:55:66</mac_addr>
+	  <timeout_sec>10</timeout_sec>
+	  <app_timeout_sec>5</app_timeout_sec>
+	  <resp_list>BT_CHECK_CONNECT_STATE_R1,BT_CHECK_CONNECT_STATE_R2,BT_CHECK_CONNECT_STATE_R3</resp_list>
+    </ACTION_BLUETOOTH_CHECK_CONNECT_STATE>
+
+    <ACTION_BLUETOOTH_PAIR_DEVICE class="PhoneControl">
+      <phone_id>phone_1</phone_id>
+      <mac_addr>55:66:55:66:55:66</mac_addr>
+	  <timeout_sec>10</timeout_sec>
+	  <app_timeout_sec>5</app_timeout_sec>
+	  <resp_list>BT_PAIR_DEVICE_R1,BT_PAIR_DEVICE_R2</resp_list>
+    </ACTION_BLUETOOTH_PAIR_DEVICE>
+
+    <ACTION_BLUETOOTH_UNPAIR_DEVICE class="PhoneControl">
+      <phone_id>phone_1</phone_id>
+      <mac_addr>55:66:55:66:55:66</mac_addr>
+	  <timeout_sec>10</timeout_sec>
+	  <app_timeout_sec>5</app_timeout_sec>
+	  <resp_list>BT_UNPAIR_DEVICE_R1,BT_UNPAIR_DEVICE_R2</resp_list>
+    </ACTION_BLUETOOTH_UNPAIR_DEVICE>
+
+    <ACTION_BLUETOOTH_CHECK_BOND_STATE class="PhoneControl">
+      <phone_id>phone_1</phone_id>
+      <mac_addr>55:66:55:66:55:66</mac_addr>
+	  <timeout_sec>10</timeout_sec>
+	  <app_timeout_sec>5</app_timeout_sec>
+	  <resp_list>BT_CHECK_BOND_STATE_R1,BT_CHECK_BOND_STATE_R2,BT_CHECK_BOND_STATE_R3</resp_list>
+    </ACTION_BLUETOOTH_CHECK_BOND_STATE>
+
+    <ACTION_BLUETOOTH_UNPAIR_ALL class="PhoneControl">
+      <phone_id>phone_1</phone_id>
+	  <timeout_sec>10</timeout_sec>
+	  <app_timeout_sec>5</app_timeout_sec>
+	  <resp_list>BT_UNPAIR_ALL_R1,BT_UNPAIR_ALL_R2</resp_list>
+    </ACTION_BLUETOOTH_UNPAIR_ALL>
+
+    <ACTION_BLUETOOTH_CONNECT_A2DP class="PhoneControl">
+      <phone_id>phone_1</phone_id>
+      <mac_addr>55:66:55:66:55:66</mac_addr>
+	  <timeout_sec>10</timeout_sec>
+	  <app_timeout_sec>5</app_timeout_sec>
+	  <resp_list>BT_CONNECT_A2DP_R1,BT_CONNECT_A2DP_R2</resp_list>
+    </ACTION_BLUETOOTH_CONNECT_A2DP>
+
+    <ACTION_BLUETOOTH_DISCONNECT_A2DP class="PhoneControl">
+      <phone_id>phone_1</phone_id>
+      <mac_addr>55:66:55:66:55:66</mac_addr>
+	  <timeout_sec>10</timeout_sec>
+	  <app_timeout_sec>5</app_timeout_sec>
+	  <resp_list>BT_DISCONNECT_A2DP_R1,BT_DISCONNECT_A2DP_R2</resp_list>
+    </ACTION_BLUETOOTH_DISCONNECT_A2DP>
+
+    <ACTION_BLUETOOTH_CHECK_A2DP class="PhoneControl">
+      <phone_id>phone_1</phone_id>
+      <mac_addr>55:66:55:66:55:66</mac_addr>
+	  <timeout_sec>10</timeout_sec>
+	  <app_timeout_sec>5</app_timeout_sec>
+	  <resp_list>BT_CHECK_A2DP_R1,BT_CHECK_A2DP_R2,BT_CHECK_A2DP_R3</resp_list>
+    </ACTION_BLUETOOTH_CHECK_A2DP>
+
+    <ACTION_BLUETOOTH_CHECK_A2DP_PLAYING class="PhoneControl">
+      <phone_id>phone_1</phone_id>
+      <mac_addr>55:66:55:66:55:66</mac_addr>
+	  <timeout_sec>10</timeout_sec>
+	  <app_timeout_sec>5</app_timeout_sec>
+	  <resp_list>BT_CHECK_A2DP_PLAYING_R1,BT_CHECK_A2DP_PLAYING_R2,BT_CHECK_A2DP_PLAYING_R3</resp_list>
+    </ACTION_BLUETOOTH_CHECK_A2DP_PLAYING>
+
+    <ACTION_BLUETOOTH_CONNECT_HFP class="PhoneControl">
+      <phone_id>phone_1</phone_id>
+      <mac_addr>55:66:55:66:55:66</mac_addr>
+	  <timeout_sec>10</timeout_sec>
+	  <app_timeout_sec>5</app_timeout_sec>
+	  <resp_list>BT_CONNECT_HFP_R1,BT_CONNECT_HFP_R2</resp_list>
+    </ACTION_BLUETOOTH_CONNECT_HFP>
+
+    <ACTION_BLUETOOTH_DISCONNECT_HFP class="PhoneControl">
+      <phone_id>phone_1</phone_id>
+      <mac_addr>55:66:55:66:55:66</mac_addr>
+	  <timeout_sec>10</timeout_sec>
+	  <app_timeout_sec>5</app_timeout_sec>
+	  <resp_list>BT_DISCONNECT_HFP_R1,BT_DISCONNECT_HFP_R2</resp_list>
+    </ACTION_BLUETOOTH_DISCONNECT_HFP>
+
+    <ACTION_BLUETOOTH_CHECK_HFP class="PhoneControl">
+      <phone_id>phone_1</phone_id>
+      <mac_addr>55:66:55:66:55:66</mac_addr>
+	  <timeout_sec>10</timeout_sec>
+	  <app_timeout_sec>5</app_timeout_sec>
+	  <resp_list>BT_CHECK_HFP_R1,BT_CHECK_HFP_R2,BT_CHECK_HFP_R3</resp_list>
+    </ACTION_BLUETOOTH_CHECK_HFP>
+
+    <ACTION_BLUETOOTH_CHECK_SCO_AVAILABLE class="PhoneControl">
+      <phone_id>phone_1</phone_id>
+	  <timeout_sec>10</timeout_sec>
+	  <app_timeout_sec>5</app_timeout_sec>
+	  <resp_list>BT_CHECK_SCO_AVAILABLE_R1,BT_CHECK_SCO_AVAILABLE_R2,BT_CHECK_SCO_AVAILABLE_R3</resp_list>
+    </ACTION_BLUETOOTH_CHECK_SCO_AVAILABLE>
+
+    <ACTION_BLUETOOTH_CHECK_SCO_STATE class="PhoneControl">
+      <phone_id>phone_1</phone_id>
+      <mac_addr>55:66:55:66:55:66</mac_addr>
+	  <timeout_sec>10</timeout_sec>
+	  <app_timeout_sec>5</app_timeout_sec>
+	  <resp_list>BT_CHECK_SCO_STATE_R1,BT_CHECK_SCO_STATE_R2,BT_CHECK_SCO_STATE_R3</resp_list>
+    </ACTION_BLUETOOTH_CHECK_SCO_STATE>
+
+    <ACTION_TASK_BT_SCAN_PAIR_CONNECT_DEVICE class="PhoneControl">
+      <phone_id>phone_1</phone_id>
+      <mac_addr>55:66:55:66:55:66</mac_addr>
+	  <timeout_sec>20</timeout_sec>
+	  <app_timeout_sec>15</app_timeout_sec>
+	  <resp_list>TASK_BT_SCAN_PAIR_CONNECT_DEVICE_R1,TASK_BT_SCAN_PAIR_CONNECT_DEVICE_R2,TASK_BT_SCAN_PAIR_CONNECT_DEVICE_R3</resp_list>
+    </ACTION_TASK_BT_SCAN_PAIR_CONNECT_DEVICE>
+
+    <ACTION_TASK_POWER_OFF_BT class="PhoneControl">
+      <phone_id>phone_1</phone_id>
+	  <timeout_sec>20</timeout_sec>
+	  <app_timeout_sec>15</app_timeout_sec>
+	  <resp_list>TASK_POWER_OFF_BT_R1,TASK_POWER_OFF_BT_R2,TASK_POWER_OFF_BT_R3</resp_list>
+    </ACTION_TASK_POWER_OFF_BT>
+
+    <ACTION_TASK_BT_DISCONNECT_UNPAIR_DEVICE class="PhoneControl">
+      <phone_id>phone_1</phone_id>
+      <mac_addr>55:66:55:66:55:66</mac_addr>
+	  <timeout_sec>20</timeout_sec>
+	  <app_timeout_sec>15</app_timeout_sec>
+	  <resp_list>TASK_BT_DISCONNECT_UNPAIR_DEVICE_R1,TASK_BT_DISCONNECT_UNPAIR_DEVICE_R2,TASK_BT_DISCONNECT_UNPAIR_DEVICE_R3</resp_list>
+    </ACTION_TASK_BT_DISCONNECT_UNPAIR_DEVICE>
+
+    <ACTION_TASK_PLAY_MUSIC_FILE class="PhoneControl">
+      <phone_id>phone_1</phone_id>
+      <file_path>/sdcard/airoha_test/music.wav</file_path>
+	    <timeout_sec>20</timeout_sec>
+	    <app_timeout_sec>15</app_timeout_sec>
+	    <resp_list>TASK_PLAY_MUSIC_FILE_R1,TASK_PLAY_MUSIC_FILE_R2,TASK_PLAY_MUSIC_FILE_R3</resp_list>
+    </ACTION_TASK_PLAY_MUSIC_FILE>
+
+    <ACTION_TASK_PAUSE_MUSIC class="PhoneControl">
+      <phone_id>phone_1</phone_id>
+	    <timeout_sec>20</timeout_sec>
+	    <app_timeout_sec>15</app_timeout_sec>
+	    <resp_list>TASK_PAUSE_MUSIC_R1,TASK_PAUSE_MUSIC_R2,TASK_PAUSE_MUSIC_R3</resp_list>
+    </ACTION_TASK_PAUSE_MUSIC>
+
+    <OfflineMemoryDump_512Bytes class="OfflineMemoryDump_512Bytes">
+      <input_log_file_path>D:\\Slot0_20180209_144238.txt</input_log_file_path>
+    </OfflineMemoryDump_512Bytes>
+
+    <ConnectSLT class="HostControl">
+      <host>serial</host>
+      <action>connect</action>
+      <device_name>1530DUT</device_name>
+      <port>4</port>
+      <rate>921600</rate>
+      <transport>ascii</transport>
+      <!-- value: "h4" or "h5" -->
+    </ConnectSLT>
+
+    <TaskSltTest class="SltTest">
+      <device_name>1530DUT</device_name>
+      <timeout>70000</timeout>
+    </TaskSltTest>
+
+    <TaskSetBrGc class="SetBrGc">
+      <dut_name>1530DUT</dut_name>
+      <br_gc>50</br_gc>
+    </TaskSetBrGc>
+
+    <TaskSetEdrGc class="SetEdrGc">
+      <dut_name>1530DUT</dut_name>
+      <edr_gc>50</edr_gc>
+    </TaskSetEdrGc>
+
+    <TaskSetLE1MGc class="SetLe1MGc">
+      <dut_name>1530DUT</dut_name>
+      <le_1M_gc>50</le_1M_gc>
+    </TaskSetLE1MGc>
+
+    <TaskSetLe2MGc class="SetLe2MGc">
+      <dut_name>1530DUT</dut_name>
+      <le_2M_gc>50</le_2M_gc>
+    </TaskSetLe2MGc>
+
+    <TaskSetXo24MCapValue class="SetXo24MCapValue">
+      <dut_name>1530DUT</dut_name>
+      <spec>0</spec>
+      <cap_value>50</cap_value>
+      <write_to_dut>true</write_to_dut>
+      <write_nv_key>true</write_nv_key>
+    </TaskSetXo24MCapValue>
+
+    <TaskSetXo32KCapValue class="SetXo32KCapValue">
+      <dut_name>1530DUT</dut_name>
+      <spec>0</spec>
+      <cap_value>50</cap_value>
+      <write_to_dut>true</write_to_dut>
+      <write_nv_key>true</write_nv_key>
+    </TaskSetXo32KCapValue>
+
+    <ResetAirDongle class="ResetAirDongle">
+      <device_name>1530DUT</device_name>
+    </ResetAirDongle>
+
+    <TaskUpdateNvKey class="UpdateNvKey">
+      <device_name>1530DUT</device_name>
+      <nvr_filename></nvr_filename>
+      <fota_via_air_update_dongle>true</fota_via_air_update_dongle>
+      <!-- true for AUD, false for UART -->
+      <connection_timeout_ms>2000</connection_timeout_ms>
+      <target_bd_address>0x112233445566</target_bd_address>
+      <minimum_battery_level>30</minimum_battery_level>
+      <!-- percentage. e.g. 30% -->
+      <do_verification>true</do_verification>
+    </TaskUpdateNvKey>
+    <FcdReset class="ResetFcd">
+      <device_name>1530DUT</device_name>
+      <retry_times>5</retry_times>
+    </FcdReset>
+
+    <!-- ANC tasks -->
+    <ancAnalysis class="AncAnalysis">
+      <recording_time_sec>1</recording_time_sec>
+      <wav_in_device_name></wav_in_device_name>
+      <wav_out_device_name></wav_out_device_name>
+      <sample_rate>16000</sample_rate>
+      <analysis_channel>1</analysis_channel> <!-- 1: left, 2: right, 3: left+right -->
+      <smooth>1</smooth>
+      <rms_freq_end>1000</rms_freq_end>
+      <!-- result: 1. mag_list_left
+                   2. freq_list_left
+                   3. rms_power_left
+                   4. mag_list_right
+                   5. freq_list_right
+                   6. rms_power_right
+      -->
+    </ancAnalysis>
+
+    <listAudioDevice class="ListAudioDevice">
+      <!-- result: 1. wav_in_list
+                   2. wav_out_list
+      -->
+    </listAudioDevice>
+    <!-- end of ANC tasks-->
+
+    <getFwInfo class="GetFwInfo">
+      <device_name>1530DUT</device_name>
+      <!-- result: 1. version
+                   2. model_name
+      -->
+    </getFwInfo>
+    <DaHandshake class="DaHandshake">
+      
+    </DaHandshake>
+
+    <ConnectDeviceByDongle class="ConnectDeviceByDongle">
+      <device_name>1530DUT</device_name>
+      <connection_timeout_ms>2000</connection_timeout_ms>
+      <target_bd_address>0x112233445566</target_bd_address>
+    </ConnectDeviceByDongle>
+
+    <DisconnectDeviceByDongle class="DisconnectDeviceByDongle">
+      <device_name>1530DUT</device_name>
+    </DisconnectDeviceByDongle>
+    
+  </task>
+</root>
