@@ -139,6 +139,8 @@ ifeq ($(MTK_MPERF_ENABLE),y)
 include $(SOURCE_DIR)/middleware/protected/mperf/module.mk
 endif
 
+CFLAGS += -flto
+LDFLAGS += -flto
 
 ###################################################
 # Rules

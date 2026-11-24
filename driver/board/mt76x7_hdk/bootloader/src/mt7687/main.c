@@ -585,6 +585,7 @@ static void process_menu(void)
     return;
 }
 
+__attribute__((used))
 int main(void)
 {
     SystemInit();

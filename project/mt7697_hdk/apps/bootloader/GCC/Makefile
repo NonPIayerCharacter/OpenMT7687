@@ -127,8 +127,8 @@ ifeq ($(MTK_FOTA_ENABLE),y)
 include $(SOURCE_DIR)/middleware/third_party/lzma_decoder/module.mk
 endif
 
-
-
+CFLAGS += -flto
+LDFLAGS += -flto
 
 ###################################################
 # Rules

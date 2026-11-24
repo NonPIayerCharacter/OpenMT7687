@@ -20,16 +20,16 @@ MTK_FW_DW_BY_CM4                            ?= n
 MTK_FLASH_DIRECT_DL  						?= y
 MTK_PATCH_DL_ENABLE                         ?= y
 MTK_ANT_DIV_ENABLE                          ?= n
-MTK_WIFI_CLI_ENABLE                         ?= y
+MTK_WIFI_CLI_ENABLE                         ?= n
 MTK_WIFI_WPA3_SAE_ENABLE                    ?= n
 MTK_WIFI_PMF_ENABLE                         ?= n
 
-AR      = $(BINPATH)/arm-none-eabi-ar
-CC      = $(BINPATH)/arm-none-eabi-gcc
-CXX     = $(BINPATH)/arm-none-eabi-g++
-OBJCOPY = $(BINPATH)/arm-none-eabi-objcopy
-SIZE    = $(BINPATH)/arm-none-eabi-size
-OBJDUMP = $(BINPATH)/arm-none-eabi-objdump
+AR      = arm-none-eabi-ar
+CC      = arm-none-eabi-gcc
+CXX     = arm-none-eabi-g++
+OBJCOPY = arm-none-eabi-objcopy
+SIZE    = arm-none-eabi-size
+OBJDUMP = arm-none-eabi-objdump
 
 
 ALLFLAGS    = -mlittle-endian -mthumb -mcpu=cortex-m4
