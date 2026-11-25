@@ -713,7 +713,7 @@ extern "C" {
 *
 * @note Support MT7687/7697.
 */
-#define WIFI_DEFAULT_STA_PMF_CAPABILITY     ("0")
+#define WIFI_DEFAULT_STA_PMF_CAPABILITY     ("1")
 
 
 /**@brief LocalAdminMAC, the value at SoftAP mode, the device used at startup. Set to use the EEPROM defined MAC address, instead of hardcoded MAC address in FW(hardly used).
