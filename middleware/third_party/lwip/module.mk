@@ -12,7 +12,8 @@ C_FILES  += $(COREFILES)           \
             $(CORE4FILES)          \
             $(CORE6FILES)          \
             $(APIFILES)            \
-            $(ETHERNET_NETIF_FILE)
+            $(ETHERNET_NETIF_FILE) \
+            $(MDNSFILES)
 
 ifeq ($(MTK_MODEM_ENABLE), y)
 C_FILES     += $(LWIP_SRC)/ports/psnetif.c
