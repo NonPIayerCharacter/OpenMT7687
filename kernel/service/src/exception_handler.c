@@ -4390,9 +4390,9 @@ void Hard_Fault_Handler(uint32_t stack[])
 
     IsSystemEnterException = true;
     
-    stackDump(stack);
+    //stackDump(stack);
 
-    memoryDumpAll();
+    //memoryDumpAll();
 
 #if defined(MTK_SAVE_LOG_AND_CONTEXT_DUMP_ENABLE)
 #if (PRODUCT_VERSION == 7686) || (PRODUCT_VERSION == 7698)
@@ -4436,9 +4436,9 @@ void Hard_Fault_Handler(uint32_t stack[])
 #endif
 #endif
 
-    if (reboot_check() == DISABLE_WHILELOOP_MAGIC) {
+    //if (reboot_check() == DISABLE_WHILELOOP_MAGIC) {
         exception_reboot();
-    }
+    //}
 
 #if DEBUGGER_ON
     __ASM volatile("BKPT #01");

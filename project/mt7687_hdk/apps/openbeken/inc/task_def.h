@@ -98,7 +98,7 @@ typedef enum {
 
 /* for lwIP task */
 #define TCPIP_THREAD_NAME              "lwIP"
-#define TCPIP_THREAD_STACKSIZE         (512 * 4)
+#define TCPIP_THREAD_STACKSIZE         (512 * 8)
 #define TCPIP_THREAD_PRIO              TASK_PRIORITY_HIGH
 
 #define DHCPD_TASK_NAME                 "dhcpd"

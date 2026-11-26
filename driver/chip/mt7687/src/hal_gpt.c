@@ -271,6 +271,38 @@ hal_gpt_status_t hal_gpt_delay_us(uint32_t us)
     return HAL_GPT_STATUS_OK;
 }
 
+static uint32_t hal_gpt_translate_timeout_time_us(uint32_t micro_seconds)
+{
+    return (uint32_t)(((uint64_t)micro_seconds * 32768) / 1000000) + 1;
+}
+
+hal_gpt_status_t hal_gpt_start_timer_us(hal_gpt_port_t gpt_port, uint32_t timeout_time_us, hal_gpt_timer_type_t timer_type)
+{
+    if(hal_gpt_is_port_valid(gpt_port) != true)
+    {
+        log_hal_error("Invalid port: %d. Only port 0 or 1 works as timer.", gpt_port);
+        return HAL_GPT_STATUS_ERROR_PORT;
+    }
+
+    if(g_gpt_context[gpt_port].has_initlized != true)
+    {
+        return HAL_GPT_STATUS_ERROR;
+    }
+
+    if(timeout_time_us / 1000 > HAL_GPT_MAXIMUM_MS_TIMER_TIME)
+    {
+        return HAL_GPT_STATUS_INVALID_PARAMETER;
+    }
+
+    drvTMR_init((uint32_t)gpt_port,
+        hal_gpt_translate_timeout_time_us(timeout_time_us),
+        hal_gpt_translate_type(timer_type),
+        hal_gpt_map_callback(gpt_port));
+    TMR_Start((uint32_t)gpt_port);
+    g_gpt_context[gpt_port].running_status = HAL_GPT_RUNNING;
+    return HAL_GPT_STATUS_OK;
+}
+
 #endif
 
 

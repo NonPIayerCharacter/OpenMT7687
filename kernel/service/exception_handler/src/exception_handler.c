@@ -1636,7 +1636,7 @@ void exception_cm4_fault_handler(uint32_t stack[], uint32_t fault_type)
     exception_dump_context(stack);
 
     /* dump the memory */
-    exception_dump_memory();
+    //exception_dump_memory();
 
 #if (EXCEPTION_SLAVES_TOTAL > 0)
     /* do the slave dump */
@@ -1647,14 +1647,14 @@ void exception_cm4_fault_handler(uint32_t stack[], uint32_t fault_type)
     exception_dump_postprocess();
 
     /* check if reboot */
-    if (reboot_check() == DISABLE_WHILELOOP_MAGIC)
+    //if (reboot_check() == DISABLE_WHILELOOP_MAGIC)
     {
         exception_reboot();
-    }
+    //}
 
     /* disable wdt reset mode for entering while loop */
     /* maybe wdt has been changed to interrupt mode for triggering the NMI interrupt */
-    exception_disable_wdt_reset();
+    //exception_disable_wdt_reset();
 
     while (1);
 }
